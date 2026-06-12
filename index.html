@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>動点シミュレーター｜1次関数とみなす</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="bar">
+  <h1>🏃 動点シミュレーター</h1>
+  <p>点Pが長方形の辺を動くと、△APDの面積はどう変わる？</p>
+</header>
+
+<main class="wrap">
+  <section class="stage">
+    <h2>① 長方形と動く点P</h2>
+    <canvas id="rectCanvas" width="460" height="380"></canvas>
+    <div class="legend">
+      <span><i class="dot a"></i>A・D は固定</span>
+      <span><i class="dot p"></i>P が A→B→C→D と動く</span>
+      <span><i class="dot tri"></i>△APD の面積 = y</span>
+    </div>
+  </section>
+
+  <section class="stage">
+    <h2>② 面積のグラフ（横軸＝動いた道のり x）</h2>
+    <canvas id="graphCanvas" width="460" height="380"></canvas>
+    <div class="eq-now" id="eqNow">区間①：y = 1.5x</div>
+  </section>
+</main>
+
+<section class="panel">
+  <div class="controls">
+    <button class="btn primary" id="playBtn">▶ 再生</button>
+    <button class="btn" id="resetBtn">⏮ 最初へ</button>
+    <label class="speed">速さ <input type="range" id="speed" min="0.3" max="2.5" step="0.1" value="1"></label>
+  </div>
+  <div class="slider-row">
+    <label>P の位置（道のり x = <output id="xOut">0.0</output> cm）</label>
+    <input type="range" id="xSlider" min="0" max="11" step="0.05" value="0">
+  </div>
+  <div class="readout" id="readout"></div>
+
+  <div class="size-row">
+    <label>AB（横） = <output id="wOut">4</output> cm <input type="range" id="wSlider" min="2" max="6" step="1" value="4"></label>
+    <label>AD（縦） = <output id="hOut">3</output> cm <input type="range" id="hSlider" min="2" max="6" step="1" value="3"></label>
+  </div>
+
+  <div class="phases">
+    <div class="phase" data-phase="0"><b>区間①</b> P は辺AB上<br><span id="ph0"></span></div>
+    <div class="phase" data-phase="1"><b>区間②</b> P は辺BC上<br><span id="ph1"></span></div>
+    <div class="phase" data-phase="2"><b>区間③</b> P は辺CD上<br><span id="ph2"></span></div>
+  </div>
+  <p class="note">💡 区間ごとに <b>傾きが変わる</b> から、グラフは折れ線になるよ。面積が一定の区間（②）は傾き0だね。</p>
+</section>
+<footer class="foot">中2 数学 第3章「1次関数の利用」動点と面積のシミュレーター</footer>
+<script src="app.js"></script>
+</body>
+</html>
