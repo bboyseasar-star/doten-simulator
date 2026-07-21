@@ -5,11 +5,12 @@
   --shadow:0 8px 24px rgba(249,115,22,.16);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--font);background:radial-gradient(1000px 600px at 50% -10%,var(--bg2),var(--bg));color:var(--ink);min-height:100vh;line-height:1.6}
+body{font-family:var(--font);background:radial-gradient(1000px 600px at 50% -10%,var(--bg2),var(--bg));color:var(--ink);height:100dvh;overflow:hidden;display:grid;grid-template-rows:auto minmax(0,1fr) auto;line-height:1.6}
 .bar{padding:16px 24px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.7);backdrop-filter:blur(6px)}
 .bar h1{font-size:24px;color:var(--fire)}
 .bar p{color:var(--muted);font-size:14px}
 .wrap{max-width:1000px;margin:18px auto;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.app-content{min-height:0;overflow-y:auto}
 .stage{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
 .stage h2{font-size:15px;margin-bottom:10px;border-left:4px solid var(--fire);padding-left:8px}
 canvas{width:100%;height:auto;background:#fffdf9;border:1px solid var(--line);border-radius:12px;display:block}
