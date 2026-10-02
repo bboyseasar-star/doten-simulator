@@ -90,11 +90,11 @@ function drawGraph(){
  c.textAlign='right';const yStep=[1,2,5,10,20].find(step=>maxY/step<=8)||20;for(let j=0;j<=maxY;j+=yStep)c.fillText(j,GX(0)-7,GY(j)+4);
  c.textAlign='left';c.fillText('y (cm²)',GX(0)+4,GY(maxY)-5);c.fillText(model().time?'x (秒)':'x (cm)',GX(maxX)-37,GY(0)+32);
  const corners=[0];routeLengths().forEach(length=>corners.push(corners[corners.length-1]+length));c.strokeStyle=COL.grid;c.setLineDash([4,4]);corners.slice(1,-1).forEach(t=>{c.beginPath();c.moveTo(GX(t),GY(0));c.lineTo(GX(t),GY(maxY));c.stroke();});c.setLineDash([]);
- // 現在点を通る補助線。端点でも描画領域の外へ線を出さない。
+ // 現在点からx軸・y軸への補助線。描画領域の外へ線を出さない。
  c.save();c.beginPath();c.rect(GX(0),GY(maxY),GX(maxX)-GX(0),GY(0)-GY(maxY));c.clip();
  c.strokeStyle='#a855f7';c.lineWidth=1.5;c.setLineDash([5,4]);
- c.beginPath();c.moveTo(GX(x),GY(0));c.lineTo(GX(x),GY(maxY));
- c.moveTo(GX(0),GY(areaAt(x)));c.lineTo(GX(maxX),GY(areaAt(x)));c.stroke();
+ c.beginPath();c.moveTo(GX(x),GY(areaAt(x)));c.lineTo(GX(x),GY(0));
+ c.moveTo(GX(x),GY(areaAt(x)));c.lineTo(GX(0),GY(areaAt(x)));c.stroke();
  c.setLineDash([]);c.restore();
  function path(points,col,width){c.strokeStyle=col;c.lineWidth=width;c.beginPath();points.forEach((t,i)=>{if(i===0)c.moveTo(GX(t),GY(areaAt(t)));else c.lineTo(GX(t),GY(areaAt(t)));});c.stroke();}
  path(corners,'rgba(249,115,22,.25)',2);path([...corners.filter(t=>t<x),x],COL.fire,3);dot(c,GX(x),GY(areaAt(x)),COL.ember,6);
