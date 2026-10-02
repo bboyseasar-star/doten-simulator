@@ -11,7 +11,7 @@ const PROBLEMS={
  triangle:{shape:'直角三角形',route:['A','B','C'],fixed:['A','C'],area:'△APC',horizontal:'AB',vertical:'BC',initial:[4,3]},
  trapezoid:{shape:'台形',route:['D','A','D'],fixed:['A','B'],area:'四角形ABQP',horizontal:'AD',vertical:'AB',initial:[2,2],time:true}
 };
-let problem='original',W=4,H=3,x=0,playing=false,speed=1,raf=null,last=null;
+let problem='original',W=4,H=3,x=0,playing=false,speed=0.5,raf=null,last=null;
 function model(){return PROBLEMS[problem];}
 function abLen(){return problem==='textbook'?H:W;}
 function adLen(){return problem==='textbook'?W:H;}
@@ -116,6 +116,7 @@ $('xSlider').oninput=e=>{stop();x=Math.max(0,Math.min(totalLen(),Number(e.target
 function setSize(){W=Number($('wSlider').value);H=Number($('hSlider').value);$('wOut').textContent=W;$('hOut').textContent=H;$('bOut').textContent=2*W;$('xSlider').max=totalLen();x=Math.min(x,totalLen());$('xSlider').value=x;update();}
 $('wSlider').oninput=setSize;$('hSlider').oninput=setSize;
 $('problemSelect').onchange=e=>{stop();problem=Object.hasOwn(PROBLEMS,e.target.value)?e.target.value:'original';x=0;$('xSlider').value=0;$('wSlider').value=model().initial[0];$('hSlider').value=model().initial[1];syncProblemLabels();setSize();};
-$('showGraph').onchange=()=>{const visible=$('showGraph').checked;$('graphWrap').hidden=!visible;$('axisNote').hidden=!visible;$('graphPlaceholder').hidden=visible;if(visible)drawGraph();};
-syncProblemLabels();update();
+function syncGraphVisibility(){const visible=$('showGraph').checked;$('graphWrap').hidden=!visible;$('axisNote').hidden=!visible;$('graphPlaceholder').hidden=visible;if(visible)drawGraph();}
+$('showGraph').onchange=syncGraphVisibility;
+syncProblemLabels();syncGraphVisibility();update();
 })();

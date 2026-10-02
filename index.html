@@ -6,12 +6,12 @@
 <title>動点シミュレーター｜1次関数とみなす</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261002-doten8">
+<link rel="stylesheet" href="style.css?v=20261002-doten11">
 </head>
 <body>
 <header class="bar">
   <div class="heading"><h1>🏃 動点シミュレーター</h1><p id="problemDescription">点Pが A→B→C→D と動くと、△APDの面積はどう変わる？</p></div>
-  <div class="toolbar"><label for="problemSelect">問題</label><select id="problemSelect"><option value="original">長方形：右→上→左</option><option value="textbook">長方形：下→右→上</option><option value="triangle">直角三角形：A→B→C</option><option value="trapezoid">台形：Pは往復・Qは片道</option></select><label class="graph-toggle"><input id="showGraph" type="checkbox" checked> グラフを表示</label></div>
+  <div class="toolbar"><label for="problemSelect">問題</label><select id="problemSelect"><option value="original">長方形：右→上→左</option><option value="textbook">長方形：下→右→上</option><option value="triangle">直角三角形：A→B→C</option><option value="trapezoid">台形：Pは往復・Qは片道</option></select></div>
 </header>
 <main class="workspace">
   <section class="stage figure-stage">
@@ -20,15 +20,15 @@
     <div class="legend"><span><i class="dot a"></i><span id="fixedLegend">A・Dは固定</span></span><span><i class="dot p"></i><span id="routeLegend">Pは A→B→C→D</span></span><span><i class="dot tri"></i><span id="areaLegend">△APDの面積＝y</span></span></div>
   </section>
   <section class="stage graph-stage" id="graphStage">
-    <h2>② 面積のグラフ</h2>
-    <div class="canvas-wrap" id="graphWrap"><canvas id="graphCanvas" width="460" height="380" aria-label="動いた道のりと三角形APDの面積のグラフ"></canvas></div>
-    <p class="axis-note" id="axisNote">横軸：動いた道のり x ／ 縦軸：面積 y</p>
-    <div class="graph-placeholder" id="graphPlaceholder" hidden>グラフは非表示です<br><span>「グラフを表示」で確かめよう</span></div>
+    <div class="graph-heading"><h2>② 面積のグラフ</h2><label class="graph-toggle"><input id="showGraph" type="checkbox"> グラフを表示</label></div>
+    <div class="canvas-wrap" id="graphWrap" hidden><canvas id="graphCanvas" width="460" height="380" aria-label="動いた道のりと三角形APDの面積のグラフ"></canvas></div>
+    <p class="axis-note" id="axisNote" hidden>横軸：動いた道のり x ／ 縦軸：面積 y</p>
+    <div class="graph-placeholder" id="graphPlaceholder">グラフは非表示です<br><span>「グラフを表示」で確かめよう</span></div>
   </section>
   <section class="panel">
     <h2>③ 動かして確かめよう</h2>
     <div class="controls"><button class="btn primary" id="playBtn">▶ 再生</button><button class="btn" id="resetBtn">⏮ 最初へ</button></div>
-    <label class="speed"><span id="speedLabel">速さ</span> <input aria-label="点Pの移動速度" type="range" id="speed" min="0.3" max="2.5" step="0.1" value="1"></label>
+    <label class="speed"><span id="speedLabel">速さ</span> <input aria-label="点Pの移動速度" type="range" id="speed" min="0.3" max="2.5" step="0.1" value="0.5"></label>
     <div class="slider-row"><label for="xSlider"><span id="xLabel">Pの位置（道のり x＝</span><output id="xOut">0.0</output><span id="xUnit"> cm）</span></label><input type="range" id="xSlider" min="0" max="11" step="0.05" value="0"></div>
     <div class="readout" id="readout"></div>
     <div class="size-row"><label for="wSlider"><span id="wLabel">AB（横）</span>＝<output id="wOut">4</output> cm<input type="range" id="wSlider" min="2" max="6" step="1" value="4"></label><label for="hSlider"><span id="hLabel">AD（縦）</span>＝<output id="hOut">3</output> cm<input type="range" id="hSlider" min="2" max="6" step="1" value="3"></label></div>
@@ -37,6 +37,6 @@
   </section>
 </main>
 <footer class="foot"><span>中2 数学 第3章「1次関数の利用」</span><a href="legal.html">このアプリについて</a></footer>
-<script src="app.js?v=20261002-doten9"></script>
+<script src="app.js?v=20261002-doten10"></script>
 </body>
 </html>
