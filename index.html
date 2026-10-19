@@ -6,7 +6,7 @@
 <title>動点シミュレーター｜1次関数とみなす</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261002-doten11">
+<link rel="stylesheet" href="style.css?v=20261019-doten13">
 </head>
 <body>
 <header class="bar">
@@ -17,6 +17,7 @@
   <section class="stage figure-stage">
     <h2 id="figureTitle">① 長方形と動く点P</h2>
     <div class="canvas-wrap"><canvas id="rectCanvas" width="460" height="380" aria-label="長方形ABCDと動点P、三角形APD"></canvas></div>
+    <div class="seg-wrap" id="segWrap" hidden><canvas id="segCanvas" role="img" aria-label="線分図"></canvas></div>
     <div class="legend"><span><i class="dot a"></i><span id="fixedLegend">A・Dは固定</span></span><span><i class="dot p"></i><span id="routeLegend">Pは A→B→C→D</span></span><span><i class="dot tri"></i><span id="areaLegend">△APDの面積＝y</span></span></div>
   </section>
   <section class="stage graph-stage" id="graphStage">
@@ -31,12 +32,14 @@
     <label class="speed"><span id="speedLabel">速さ</span> <input aria-label="点Pの移動速度" type="range" id="speed" min="0.3" max="2.5" step="0.1" value="0.5"></label>
     <div class="slider-row"><label for="xSlider"><span id="xLabel">Pの位置（道のり x＝</span><output id="xOut">0.0</output><span id="xUnit"> cm）</span></label><input type="range" id="xSlider" min="0" max="11" step="0.05" value="0"></div>
     <div class="readout" id="readout"></div>
+    <div class="hint" role="group" aria-labelledby="hintHead"><div class="hint-top"><span class="hint-head" id="hintHead">ヒント</span><span class="hint-sub" id="hintCaption">底辺・高さ</span></div><div class="hint-ctrl"><div class="seg" role="radiogroup" aria-labelledby="hintCaption"><input type="radio" name="hintLevel" id="hintNone" value="none" checked><label for="hintNone">なし</label><input type="radio" name="hintLevel" id="hintName" value="name"><label for="hintName">名前だけ</label><input type="radio" name="hintLevel" id="hintLen" value="len"><label for="hintLen">長さも</label></div><input type="checkbox" class="chip-in" id="segToggle"><label class="chip" for="segToggle">線分図</label></div></div>
+    <div class="hint-eq" id="hintEq" aria-live="polite" hidden></div>
     <div class="size-row"><label for="wSlider"><span id="wLabel">AB（横）</span>＝<output id="wOut">4</output> cm<input type="range" id="wSlider" min="2" max="6" step="1" value="4"></label><label for="hSlider"><span id="hLabel">AD（縦）</span>＝<output id="hOut">3</output> cm<input type="range" id="hSlider" min="2" max="6" step="1" value="3"></label></div>
     <div id="linkedBase" class="linked-base" hidden>下底BC＝<output id="bOut">4</output> cm<br><span>上底ADは下底BCの半分です。</span><br><span>P・Qはともに1 cm/秒で動きます。</span></div>
     <p class="note" id="explorationNote">💡 辺ごとに面積の変わり方を調べよう。</p>
   </section>
 </main>
 <footer class="foot"><span>中2 数学 第3章「1次関数の利用」</span><a href="legal.html">このアプリについて</a></footer>
-<script src="app.js?v=20261002-doten12"></script>
+<script src="app.js?v=20261019-doten13"></script>
 </body>
 </html>
